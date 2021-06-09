@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { CardList } from './components/card-list/card-list.component.jsx';
+import { SearchBox } from './components/search-box/search-box.component';
 
 class App extends Component {
   constructor() {
@@ -25,10 +26,12 @@ class App extends Component {
     );
     return (
       <div className='App'>
-      <input type='search' placeholder='search monsters' onChange={e => {this.setState({ searchField: e.target.value }, () => console.log(this.state))
-                                                                        }} />
 {/* this.setState is asynchronous function so it will active after console.log(this.state) 
     we can write second argument funtion to run after setState*/}
+      <SearchBox
+        placeholder = 'search monster'
+        handleChange = {e => {this.setState({ searchField: e.target.value }, () => console.log(this.state))}}
+      />
       <CardList monsters={filteredMonsters} />
       </div>
     )
